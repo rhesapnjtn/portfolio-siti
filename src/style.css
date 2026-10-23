@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --font-syne: 'Syne', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-space: 'Space Grotesk', monospace;
+  --font-handwriting: 'Caveat', cursive;
+
+  --color-canvas: #FAF9FD;
+  --color-canvas-paper: #F8F6F3;
+  --color-ink: #121316;
+  --color-ink-muted: #575965;
+  --color-ink-faint: #8F91A0;
+  --color-cobalt: #1D4ED8;
+  --color-lavender: #8B5CF6;
+  --color-lavender-light: #F3E8FF;
+  --color-yellow-butter: #FEF08A;
+  --color-hairline: rgba(18, 19, 22, 0.08);
+  --color-hairline-solid: #E6E2DC;
+
+  --shadow-hard: 2px 2px 0px #121316;
+  --shadow-hard-lg: 4px 4px 0px #121316;
+  --shadow-hard-lavender: 2px 2px 0px #8B5CF6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-jakarta);
+    background-color: #FAF9FD;
+    color: #121316;
+  }
+
+  ::selection {
+    background-color: #8B5CF6;
+    color: #FFFFFF;
+  }
+}
+
+/* Custom Editorial Micro-interactions */
+.btn-hard-offset {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-hard-offset:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0px #121316;
+}
+.btn-hard-offset:active {
+  transform: translate(0, 0);
+  box-shadow: 0px 0px 0px #121316;
+}
+
+.btn-hard-offset-lavender:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0px #8B5CF6;
+}
+
+/* Editorial baseline input */
+.input-editorial {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #121316;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.input-editorial:focus {
+  border-bottom-color: #1D4ED8;
+}
+
+/* Card hover micro-lift */
+.card-editorial {
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 19, 22, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-editorial:hover {
+  transform: translateY(-3px);
+  border-color: #121316;
+  box-shadow: 4px 4px 0px rgba(18, 19, 22, 0.12);
+}
+
+/* Frosted glass header */
+.header-frosted {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(250, 249, 253, 0.88);
+  border-bottom: 1px solid rgba(18, 19, 22, 0.06);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  HERO — layered entrance + scroll choreography                              */
+/* -------------------------------------------------------------------------- */
+.hero-word-inner {
+  display: inline-block;
+  transform: translate3d(0, 112%, 0);
+  animation: heroWordUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-fade-up {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-portrait-in {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(0.975);
+  animation: heroPortraitIn 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+@keyframes heroWordUp {
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroPortraitIn {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  SECTION REVEALS — slide in as each editorial chapter enters the viewport   */
+/* -------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word-inner,
+  .hero-fade-up,
+  .hero-portrait-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fade transition (contact success message, etc.) */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 6px, 0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9FD;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4C5D7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8B5CF6;
+}
