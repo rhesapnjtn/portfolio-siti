@@ -7,14 +7,14 @@
       <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between border-b border-black/10 pb-6 mb-16">
         <div>
           <span class="font-['Space_Grotesk'] text-xs font-bold tracking-[0.2em] text-[#8B5CF6] uppercase block mb-2">
-            CHAPTER 02 / SELECTED WORKS
+            BAB 03 / KARYA &amp; INVENTARISASI PROYEK
           </span>
           <h2 class="font-['Syne'] font-bold text-4xl sm:text-5xl text-[#121316] tracking-tight">
-            03 / Exhibition
+            03 / Eksibisi Proyek
           </h2>
         </div>
         <p class="font-['Plus_Jakarta_Sans'] text-sm sm:text-base text-[#575965] max-w-md mt-4 md:mt-0">
-          A closer look at the procurement, organizational, and event work behind the CV—documented, coordinated, and delivered.
+          Tinjauan mendalam atas peran di bidang administrasi pengadaan, kepengurusan organisasi, dan operasional acara—terencana, terkoordinasi, dan akuntabel.
         </p>
       </div>
 
@@ -24,16 +24,21 @@
           v-for="cat in categories"
           :key="cat"
           @click="activeCategory = cat"
-          class="px-5 py-2 rounded-full text-xs font-['Space_Grotesk'] font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer"
-          :class="activeCategory === cat ? 'bg-[#121316] text-[#FAF9FD] shadow-sm' : 'bg-white border border-black/10 text-[#575965] hover:border-black/30 hover:text-[#121316]'"
+          class="px-5 py-2 rounded-full text-xs font-['Space_Grotesk'] font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer active:scale-95"
+          :class="activeCategory === cat ? 'bg-[#121316] text-[#FAF9FD] shadow-md scale-105' : 'bg-white border border-black/10 text-[#575965] hover:border-black/30 hover:text-[#121316]'"
         >
           {{ cat }}
         </button>
       </div>
 
-      <!-- Project Cards Grid (Asymmetric Editorial Style) -->
-      <div data-reveal style="--reveal-delay: 180ms" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-        
+      <!-- Project Cards Grid with Smooth Transition -->
+      <transition-group
+        name="project-cards"
+        tag="div"
+        data-reveal
+        style="--reveal-delay: 180ms"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+      >
         <article
           v-for="project in filteredProjects"
           :key="project.id"
@@ -88,7 +93,7 @@
               </div>
             </div>
 
-            <!-- Tech Badges (Butter Yellow Pills from DESIGN.md) -->
+            <!-- Tech Badges (Butter Yellow Pills) -->
             <div class="flex flex-wrap gap-2 mb-8">
               <span
                 v-for="tag in project.tags"
@@ -113,23 +118,22 @@
                 <line x1="8" y1="21" x2="16" y2="21"></line>
                 <line x1="12" y1="17" x2="12" y2="21"></line>
               </svg>
-              View Details
+              Lihat Detail
             </button>
 
-            <!-- Inspect Code / Details -->
+            <!-- Inspect Process & Context -->
             <button
               @click="$emit('inspect-project', project)"
               class="inline-flex items-center gap-1.5 text-xs font-['Space_Grotesk'] font-bold tracking-wider uppercase text-[#121316] hover:text-[#1D4ED8] transition-colors group/link cursor-pointer"
             >
-              <span>Process &amp; Context</span>
+              <span>Proses &amp; Konteks</span>
               <span class="transition-transform group-hover/link:translate-x-1">→</span>
             </button>
 
           </div>
 
         </article>
-
-      </div>
+      </transition-group>
 
     </div>
 
@@ -142,13 +146,28 @@ import { portfolioData } from '../data/portfolio.js'
 
 defineEmits(['inspect-project'])
 
-const activeCategory = ref('All')
-const categories = ['All', 'Procurement', 'Organization', 'Event Operations']
+const activeCategory = ref('Semua')
+const categories = ['Semua', 'Pengadaan', 'Organisasi', 'Operasional Acara']
 
 const projects = portfolioData.projects
 
 const filteredProjects = computed(() => {
-  if (activeCategory.value === 'All') return projects
+  if (activeCategory.value === 'Semua') return projects
   return projects.filter(p => p.category === activeCategory.value)
 })
 </script>
+
+<style scoped>
+.project-cards-enter-active,
+.project-cards-leave-active {
+  transition: all 0.35s ease;
+}
+.project-cards-enter-from {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+}
+.project-cards-leave-to {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.96);
+}
+</style>

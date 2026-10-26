@@ -7,14 +7,14 @@
       <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between border-b border-black/10 pb-6 mb-16">
         <div>
           <span class="font-['Space_Grotesk'] text-xs font-bold tracking-[0.2em] text-[#8B5CF6] uppercase block mb-2">
-            CHAPTER 04 / CORE CAPABILITIES
+            BAB 05 / KEMAMPUAN UTAMA &amp; TEKNOLOGI
           </span>
           <h2 class="font-['Syne'] font-bold text-4xl sm:text-5xl text-[#121316] tracking-tight">
-            05 / Skills &amp; Capabilities
+            05 / Keahlian &amp; Kompetensi
           </h2>
         </div>
         <p class="font-['Plus_Jakarta_Sans'] text-sm sm:text-base text-[#575965] max-w-md mt-4 md:mt-0">
-          A practical toolkit for procurement administration, data processing, documentation, and team coordination.
+          Kombinasi kemampuan praktis untuk administrasi pengadaan, pengolahan data, manajemen arsip, dan kolaborasi kerja.
         </p>
       </div>
 
@@ -32,7 +32,7 @@
             <div class="flex items-center justify-between pb-4 border-b border-black/[0.08] mb-6">
               <div>
                 <span class="font-['Space_Grotesk'] text-[11px] font-bold text-[#8B5CF6] uppercase tracking-widest block mb-1">
-                  DOMAIN 0{{ index + 1 }}
+                  BIDANG KOMPETENSI 0{{ index + 1 }}
                 </span>
                 <h3 class="font-['Syne'] font-bold text-xl sm:text-2xl text-[#121316]">
                   {{ cat.name }}
@@ -66,8 +66,8 @@
 
           <!-- Bottom Note -->
           <div class="mt-8 pt-4 border-t border-black/[0.06] flex items-center justify-between text-[11px] font-['Space_Grotesk'] text-[#8F91A0] uppercase tracking-wider">
-            <span>Based on CV &amp; Experience</span>
-            <span>CV-Verified</span>
+            <span>Berdasarkan CV &amp; Pengalaman</span>
+            <span>Terverifikasi CV</span>
           </div>
 
         </div>

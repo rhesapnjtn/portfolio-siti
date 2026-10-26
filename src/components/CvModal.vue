@@ -1,6 +1,6 @@
 <template>
   <transition
-    enter-active-class="transition duration-200 ease-out"
+    enter-active-class="transition duration-250 ease-out"
     enter-from-class="opacity-0 scale-95"
     enter-to-class="opacity-100 scale-100"
     leave-active-class="transition duration-150 ease-in"
@@ -34,7 +34,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              Download PDF
+              Unduh PDF
             </a>
             <a
               :href="cvFile"
@@ -42,11 +42,12 @@
               rel="noopener noreferrer"
               class="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF9FD] border border-black/10 text-[#121316] text-xs font-['Space_Grotesk'] font-bold uppercase tracking-wider hover:bg-black/5 transition-colors cursor-pointer"
             >
-              Open in New Tab
+              Buka di Tab Baru
             </a>
             <button
               @click="$emit('close')"
               class="w-8 h-8 rounded-full bg-[#FAF9FD] border border-black/10 flex items-center justify-center text-[#121316] hover:bg-black/5 cursor-pointer"
+              aria-label="Tutup pratinjau"
             >
               ✕
             </button>
@@ -57,25 +58,25 @@
         <div class="bg-[#F3F4F6] p-3 sm:p-5 flex-1 overflow-hidden">
           <iframe
             :src="cvFile"
-            title="Curriculum Vitae"
+            title="Pratinjau Curriculum Vitae"
             class="w-full h-[68vh] min-h-[420px] rounded-lg border border-black/10 bg-white"
           ></iframe>
           <p class="mt-3 text-center font-['Space_Grotesk'] text-[11px] uppercase tracking-wider text-[#8F91A0]">
-            If the preview does not load, use “Download PDF” or “Open in New Tab”.
+            Jika pratinjau tidak termuat di peramban, gunakan tombol “Unduh PDF” atau “Buka di Tab Baru”.
           </p>
         </div>
 
         <!-- Modal Footer -->
         <div class="px-6 sm:px-8 py-4 bg-white border-t border-black/[0.08] flex items-center justify-between">
           <span class="font-['Space_Grotesk'] text-xs text-[#8F91A0] uppercase tracking-wider">
-            Official CV · {{ personal.name }}
+            Dokumen Resmi CV · {{ personal.name }}
           </span>
           <a
             :href="cvFile"
             download
             class="sm:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#121316] text-[#FAF9FD] text-xs font-['Space_Grotesk'] font-bold uppercase tracking-wider cursor-pointer"
           >
-            Download PDF
+            Unduh PDF
           </a>
         </div>
 

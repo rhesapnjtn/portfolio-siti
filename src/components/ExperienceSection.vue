@@ -7,14 +7,14 @@
       <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between border-b border-black/10 pb-6 mb-16">
         <div>
           <span class="font-['Space_Grotesk'] text-xs font-bold tracking-[0.2em] text-[#8B5CF6] uppercase block mb-2">
-            CHAPTER 03 / PROFESSIONAL &amp; ORGANIZATIONAL JOURNEY
+            BAB 04 / PERJALANAN PROFESIONAL &amp; ORGANISASI
           </span>
           <h2 class="font-['Syne'] font-bold text-4xl sm:text-5xl text-[#121316] tracking-tight">
-            04 / Trajectory
+            04 / Trajektori Karir
           </h2>
         </div>
         <p class="font-['Plus_Jakarta_Sans'] text-sm sm:text-base text-[#575965] max-w-md mt-4 md:mt-0">
-          Procurement exposure, campus organizations, and event operations—built around documentation, coordination, and follow-through.
+          Pengalaman magang pengadaan TI, kepengurusan organisasi kampus, dan operasional logistik acara—dijalankan dengan tertib dokumentasi dan koordinasi aktif.
         </p>
       </div>
 
@@ -80,7 +80,7 @@
                   class="flex items-start gap-2.5 text-xs sm:text-sm text-[#121316]"
                 >
                   <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] mt-2 shrink-0"></span>
-                  <span class="font-['Plus_Jakarta_Sans']">{{ item }}</span>
+                  <span class="font-['Plus_Jakarta_Sans'] leading-relaxed">{{ item }}</span>
                 </div>
               </div>
 

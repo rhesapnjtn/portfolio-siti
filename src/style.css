@@ -72,12 +72,12 @@
 .card-editorial {
   background: #FFFFFF;
   border: 1px solid rgba(18, 19, 22, 0.08);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .card-editorial:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: #121316;
-  box-shadow: 4px 4px 0px rgba(18, 19, 22, 0.12);
+  box-shadow: 4px 4px 0px rgba(18, 19, 22, 0.14);
 }
 
 /* Frosted glass header */
@@ -95,6 +95,32 @@
   display: inline-block;
   transform: translate3d(0, 112%, 0);
   animation: heroWordUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  HERO TYPOGRAPHY - Clean Solid Black / Ink Editorial                       */
+/* -------------------------------------------------------------------------- */
+.hero-masked-word {
+  position: relative;
+  color: #121316 !important;
+  -webkit-text-stroke: 0px transparent;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  animation: none;
+  filter: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@media (max-width: 1023px) {
+  .hero-masked-word {
+    -webkit-text-stroke: 0px transparent;
+  }
+}
+
+.hero-masked-word:hover {
+  -webkit-text-stroke: 0px transparent;
+  filter: none;
 }
 
 .hero-fade-up {
@@ -147,6 +173,20 @@
   transform: translate3d(0, 0, 0);
 }
 
+/* Arrival glow animation when arriving via page transition */
+.section-arrival-pulse {
+  animation: sectionArrival 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sectionArrival {
+  0% {
+    filter: brightness(1.08);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-word-inner,
   .hero-fade-up,
@@ -191,4 +231,59 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #8B5CF6;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  EDUCATION — academic dossier panel, GPA meter & photo gallery              */
+/* -------------------------------------------------------------------------- */
+.academic-dossier {
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(circle at 4% -12%, rgba(139, 92, 246, 0.10), transparent 38%),
+    radial-gradient(circle at 102% 112%, rgba(29, 78, 216, 0.07), transparent 42%),
+    radial-gradient(circle at 78% 6%, rgba(254, 240, 138, 0.30), transparent 30%),
+    linear-gradient(158deg, #ffffff 0%, #fdfcff 52%, #f8f7fd 100%);
+}
+
+.academic-dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.gpa-meter-fill {
+  width: var(--gpa, 0%);
+  transform-origin: left center;
+}
+
+[data-reveal].is-revealed .gpa-meter-fill {
+  animation: gpaMeterFill 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+@keyframes gpaMeterFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].is-revealed .gpa-meter-fill {
+    animation: none;
+  }
 }
